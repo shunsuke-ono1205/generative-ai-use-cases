@@ -15,7 +15,7 @@
     ]
   },
   "context": {
-    "stackName": "i",
+    "stackName": "genai-cases",
     "env": "us-east-1",
     "ragEnabled": true,
     "kendraIndexArn": null,
