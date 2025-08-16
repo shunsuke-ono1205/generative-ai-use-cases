@@ -17,7 +17,7 @@
   "context": {
     "stackName": "genai",
     "env": "us-east-1",
-    "ragEnabled": true,
+    "ragEnabled": false,
     "kendraIndexArn": null,
     "kendraIndexLanguage": "ja",
     "kendraDataSourceBucketName": null,
