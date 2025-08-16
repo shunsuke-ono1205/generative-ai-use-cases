@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 // Base schema without refine
 const baseStackInputSchema = z.object({
+  stackName: z.string().default('GenerativeAiUseCasesStack'),
   account: z.string().default(process.env.CDK_DEFAULT_ACCOUNT ?? ''),
   region: z.string().default(process.env.CDK_DEFAULT_REGION ?? 'us-east-1'),
   env: z.string().default(''),
@@ -182,6 +183,7 @@ export const stackInputSchema = baseStackInputSchema.refine(
 
 // schema after conversion
 export const processedStackInputSchema = baseStackInputSchema.extend({
+  stackName: z.string(),
   modelIds: z.array(
     z.object({
       modelId: z.string(),
