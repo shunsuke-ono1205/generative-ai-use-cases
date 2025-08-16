@@ -28,7 +28,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
     params.allowedIpV6AddressRanges ||
     params.allowedCountryCodes ||
     params.hostName
-      ? new CloudFrontWafStack(app, `CloudFrontWafStack${params.env}`, {
+      ? new CloudFrontWafStack(app, `CF${params.env}`, {
           env: {
             account: params.account,
             region: 'us-east-1',
@@ -41,7 +41,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
   // RAG Knowledge Base
   const ragKnowledgeBaseStack =
     params.ragKnowledgeBaseEnabled && !params.ragKnowledgeBaseId
-      ? new RagKnowledgeBaseStack(app, `RagKnowledgeBaseStack${params.env}`, {
+      ? new RagKnowledgeBaseStack(app, `RagKB${params.env}`, {
           env: {
             account: params.account,
             region: params.modelRegion,
@@ -60,7 +60,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
     }
   }
   const agentStack = params.agentEnabled
-    ? new AgentStack(app, `WebSearchAgentStack${params.env}`, {
+    ? new AgentStack(app, `Agent${params.env}`, {
         env: {
           account: params.account,
           region: params.modelRegion,
@@ -72,7 +72,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
 
   // Guardrail
   const guardrail = params.guardrailEnabled
-    ? new GuardrailStack(app, `GuardrailStack${params.env}`, {
+    ? new GuardrailStack(app, `GR${params.env}`, {
         env: {
           account: params.account,
           region: params.modelRegion,
@@ -91,7 +91,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
   for (const region of videoModelRegions) {
     const videoTmpBucketStack = new VideoTmpBucketStack(
       app,
-      `VideoTmpBucketStack${params.env}${region}`,
+      `VB${params.env}${region}`,
       {
         env: {
           account: params.account,
@@ -108,7 +108,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
   const isSageMakerStudio = 'SAGEMAKER_APP_TYPE_LOWERCASE' in process.env;
   const generativeAiUseCasesStack = new GenerativeAiUseCasesStack(
     app,
-    `GenerativeAiUseCasesStack${params.env}`,
+    params.stackName,
     {
       env: {
         account: params.account,
@@ -146,7 +146,7 @@ export const createStacks = (app: cdk.App, params: ProcessedStackInput) => {
   const dashboardStack = params.dashboard
     ? new DashboardStack(
         app,
-        `GenerativeAiUseCasesDashboardStack${params.env}`,
+        `DB${params.env}`,
         {
           env: {
             account: params.account,
