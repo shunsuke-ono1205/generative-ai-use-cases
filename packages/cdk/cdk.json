@@ -15,7 +15,7 @@
     ]
   },
   "context": {
-    "stackName": "gen",
+    "stackName": "i",
     "env": "us-east-1",
     "ragEnabled": true,
     "kendraIndexArn": null,
