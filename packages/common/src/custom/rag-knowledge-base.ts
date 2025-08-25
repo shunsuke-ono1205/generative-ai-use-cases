@@ -92,54 +92,27 @@ export const hiddenStaticExplicitFilters: RetrievalFilter[] = [
 // Define filters that user can select on the application
 // The sample file (packages/cdk/rag-docs/docs) defines the metadata.json accordingly.
 export const userDefinedExplicitFilters: ExplicitFilterConfiguration[] = [
-  // Example 1: Filter by category (string match)
-  {
-    key: 'category',
-    type: 'STRING',
-    options: [{ value: 'AWS', label: 'AWS' }],
-    description: 'Category',
-  },
-
-  // Example 2: Filter by tag (string list)
-  {
-    key: 'tag',
-    type: 'STRING_LIST',
-    options: [
-      { value: 'AWS', label: 'AWS' },
-      { value: 'Amazon Bedrock', label: 'Amazon Bedrock' },
-      { value: 'Amazon SageMaker', label: 'Amazon SageMaker' },
-    ],
-    description: 'Tag',
-  },
-
-  // Example 3: Filter by year (number)
-  {
-    key: 'year',
-    type: 'NUMBER',
-    description: 'Year',
-  },
-
-  // Example 4: Filter by is_public (boolean)
-  {
-    key: 'is_public',
-    type: 'BOOLEAN',
-    options: [
-      { value: 'true', label: 'Public' },
-      { value: 'false', label: 'Private' },
-    ],
-    description: 'Public',
-  },
-
-  // Example 5: Filter by language (string match)
-  {
-    key: 'language',
-    type: 'STRING',
-    options: [
-      { value: 'en', label: 'English' },
-      { value: 'ja', label: 'Japanese' },
-    ],
-    description: 'Language',
-  },
-
   // Customize Here
+  // 部署フィルター
+  {
+    key: 'department',
+    type: 'STRING',
+    options: [
+      { value: '営業部', label: '営業部' },
+      { value: '製造部', label: '製造部' },
+      { value: 'システム部', label: 'システム部' },
+    ],
+    description: '部署',
+  },
+  // 勤務形態フィルター
+  {
+    key: 'work_type',
+    type: 'STRING',
+    options: [
+      { value: 'field_work', label: '外回り営業' },
+      { value: 'shift_work', label: 'シフト勤務' },
+      { value: 'flexible_remote', label: 'フレックス・在宅' },
+    ],
+    description: '勤務形態',
+  },
 ];
